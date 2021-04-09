@@ -1,0 +1,13 @@
+<form [formGroup]="formGroup">
+  form.valid: {{formGroup.valid}}<br>
+  form.value: {{formGroup.value | json}}
+  <div class="form-field">
+    <label>Input</label>
+    <input type="text" formControlName="first">
+  </div>
+  <div class="form-field">
+    <label>Show Sub Form</label>
+    <input type="checkbox" formControlName="second">
+  </div>
+  <app-sub-form *ngIf="formGroup.controls.second.value"></app-sub-form>
+</form>

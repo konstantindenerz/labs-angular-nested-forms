@@ -1,0 +1,15 @@
+:host {
+}
+form {
+  border: var(--form-group-border);
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+}
+
+.form-field {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  box-shadow: var(--dp5);
+  padding: 20px;
+}
