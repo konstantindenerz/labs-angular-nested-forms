@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CustomValidators} from './custom.validators';
 
 @Component({
   selector: 'app-form-page',
@@ -13,7 +14,7 @@ export class FormPageComponent implements OnInit {
     this.formGroup = formBuilder.group({
       first: ['', Validators.required],
       second: ['']
-    });
+    }, {validators: [CustomValidators.subFormValidator]});
   }
 
   ngOnInit(): void {

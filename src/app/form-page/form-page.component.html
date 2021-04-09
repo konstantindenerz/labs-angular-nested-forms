@@ -10,4 +10,5 @@
     <input type="checkbox" formControlName="second">
   </div>
   <app-sub-form *ngIf="formGroup.controls.second.value"></app-sub-form>
+  <app-sub-form *ngIf="formGroup.controls.second.value" name="secondSubForm"></app-sub-form>
 </form>

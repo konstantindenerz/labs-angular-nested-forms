@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 
 @Component({
@@ -7,24 +7,25 @@ import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/f
   styleUrls: ['./sub-form.component.scss']
 })
 export class SubFormComponent implements OnInit, OnDestroy {
-  formGroup: FormGroup;
+  formGroup: FormGroup = {} as any;
+  @Input() name: string = 'subForm';
 
-  constructor(private parent: FormGroupDirective, formBuilder: FormBuilder) {
-    this.formGroup = formBuilder.group({
-      foo: ['', Validators.required],
-      bar: ['']
-    });
-    Promise.resolve().then(() => {
-      parent.form.addControl('subform', this.formGroup);
-    });
+  constructor(private parent: FormGroupDirective, private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.formGroup = this.formBuilder.group({
+      foo: [''],
+      bar: ['']
+    });
+    Promise.resolve().then(() => {
+      this.parent.form.addControl(this.name, this.formGroup);
+    });
   }
 
   ngOnDestroy(): void {
     Promise.resolve().then(() => {
-      this.parent.form.removeControl('subform');
+      this.parent.form.removeControl(this.name);
     });
   }
 }
