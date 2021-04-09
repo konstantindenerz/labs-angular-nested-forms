@@ -24,9 +24,9 @@ export class SubSubFormComponent implements OnInit, OnDestroy {
       setTimeout(() => {
         this.ngZone.run(() => {
           this.formGroup.reset({test: '42'});
-        })
+        });
       }, 2000);
-    })
+    });
   }
 
   ngOnDestroy(): void {
