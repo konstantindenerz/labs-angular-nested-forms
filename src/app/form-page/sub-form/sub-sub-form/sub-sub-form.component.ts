@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, NgZone, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, FormGroupDirective, Validators} from '@angular/f
 export class SubSubFormComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
 
-  constructor(private parent: FormGroupDirective, formBuilder: FormBuilder) {
+  constructor(private parent: FormGroupDirective, formBuilder: FormBuilder, private ngZone: NgZone) {
     this.formGroup = formBuilder.group({
       test: ['', Validators.required],
       bubu: ['']
@@ -20,6 +20,13 @@ export class SubSubFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      setTimeout(() => {
+        this.ngZone.run(() => {
+          this.formGroup.reset({test: '42'});
+        })
+      }, 2000);
+    })
   }
 
   ngOnDestroy(): void {
