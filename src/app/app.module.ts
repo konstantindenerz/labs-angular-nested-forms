@@ -7,6 +7,7 @@ import {FormPageComponent} from './form-page/form-page.component';
 import {SubFormComponent} from './form-page/sub-form/sub-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { SubSubFormComponent } from './form-page/sub-form/sub-sub-form/sub-sub-form.component';
+import { FooComponent } from './form-page/foo/foo.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { SubSubFormComponent } from './form-page/sub-form/sub-sub-form/sub-sub-f
     FormPageComponent,
     SubFormComponent,
     SubSubFormComponent,
+    FooComponent,
   ],
   imports: [
     BrowserModule,
